@@ -28,6 +28,15 @@
                 $('#m').val('');
                 return false;
             });
+            socket.on('chat message', function(msg){
+              $('#messages').append($('<li>').text(msg));
+            });
+            socket.on('logon', function(){
+              $('#messages').append($('<li>').text('A user logged on'));
+            });
+            socket.on('logoff', function(){
+              $('#messages').append($('<li>').text('A user logged off'));
+            });
         });
     </script>
   </body>

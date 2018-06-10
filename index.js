@@ -7,15 +7,15 @@ app.get('/', function(rec, res){
 });
 
 io.on('connection', function(socket){
-    console.log('A user connected');
+    io.emit('logon');
     socket.on('disconnect', function(){
-        console.log('A user disconnected');
+        io.emit('logoff');
     });
 });
 
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
-        console.log('message: ' + msg);
+        io.emit('chat message', msg);
     });
 });
 
